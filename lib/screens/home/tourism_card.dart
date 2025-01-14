@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tourism/models/tourism.dart';
+import 'package:tourism/static/navigation_route.dart';
 
 class TourismCard extends StatelessWidget {
   const TourismCard({super.key, required this.tourism});
@@ -42,7 +43,8 @@ class TourismCard extends StatelessWidget {
 
   GestureTapCallback _goToDetail(BuildContext context, Tourism tourism) {
     return () {
-      Navigator.pushNamed(context, "/detail", arguments: tourism);
+      Navigator.pushNamed(context, NavigationRoute.detailRoute.name,
+          arguments: tourism);
     };
   }
 }
