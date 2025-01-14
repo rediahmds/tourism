@@ -22,7 +22,7 @@ class DetailScreen extends StatelessWidget {
         title: const Text("Tourism Detail"),
         centerTitle: true,
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
           child: Padding(
         padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
         child: Column(
