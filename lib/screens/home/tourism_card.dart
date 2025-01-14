@@ -8,7 +8,7 @@ class TourismCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: _goToDetail(context, tourism),
       child: Card.outlined(
         child: Padding(
@@ -41,8 +41,6 @@ class TourismCard extends StatelessWidget {
   }
 
   GestureTapCallback _goToDetail(BuildContext context, Tourism tourism) {
-    // TODO: Implement switching pages
-    debugPrint("[DEBUG] Switching page to /detail");
     return () {
       Navigator.pushNamed(context, "/detail", arguments: tourism);
     };
