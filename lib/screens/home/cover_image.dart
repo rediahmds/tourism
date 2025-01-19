@@ -15,9 +15,12 @@ class CoverImage extends StatelessWidget {
           minWidth: 80, minHeight: 80, maxWidth: 120, maxHeight: 120),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: Image.network(
-          url,
-          fit: BoxFit.cover,
+        child: Hero(
+          tag: url,
+          child: Image.network(
+            url,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
