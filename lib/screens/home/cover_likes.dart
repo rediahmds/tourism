@@ -17,7 +17,10 @@ class CoverLikes extends StatelessWidget {
           color: Colors.deepPurpleAccent,
         ),
         const SizedBox.square(dimension: 3),
-        Text(likes.toString())
+        Text(
+          likes.toString(),
+          style: Theme.of(context).textTheme.labelMedium,
+        )
       ],
     );
   }

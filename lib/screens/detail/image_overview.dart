@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class ImageOverview extends StatelessWidget {
-  ImageOverview({super.key, required this.url});
+  const ImageOverview({super.key, required this.url});
 
   final String url;
 
@@ -9,7 +9,7 @@ class ImageOverview extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15.0),
-      child: Image.network(url),
+      child: Image.network(url, fit: BoxFit.cover),
     );
   }
 }

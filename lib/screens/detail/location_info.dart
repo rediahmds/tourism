@@ -8,12 +8,17 @@ class LocationInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
-        Text(address)
-      ],
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(name, style: Theme.of(context).textTheme.headlineLarge),
+          Text(
+            address,
+            style: Theme.of(context).textTheme.labelLarge,
+          )
+        ],
+      ),
     );
   }
 }

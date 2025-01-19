@@ -13,7 +13,10 @@ class Likes extends StatelessWidget {
           Icons.thumb_up_rounded,
           color: Colors.deepPurpleAccent,
         ),
-        Text(likes.toString())
+        Text(
+          likes.toString(),
+          style: Theme.of(context).textTheme.labelMedium,
+        )
       ],
     );
   }

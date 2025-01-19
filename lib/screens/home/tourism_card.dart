@@ -30,11 +30,8 @@ class TourismCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    tourism.name,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
+                  Text(tourism.name,
+                      style: Theme.of(context).textTheme.titleMedium),
                   const SizedBox.square(dimension: 6),
                   CoverLocation(address: tourism.address),
                   const SizedBox.square(dimension: 6),

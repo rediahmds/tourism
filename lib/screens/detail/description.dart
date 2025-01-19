@@ -7,6 +7,9 @@ class Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(descriptionText);
+    return Text(
+      descriptionText,
+      style: Theme.of(context).textTheme.bodyMedium,
+    );
   }
 }
