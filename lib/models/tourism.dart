@@ -19,6 +19,8 @@ class Tourism {
   final String image;
 }
 
+List<Tourism> bookmarkedTourismList = [];
+
 final List<Tourism> tourismList = [
   Tourism(
     id: 1,
