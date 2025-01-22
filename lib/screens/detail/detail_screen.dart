@@ -4,6 +4,7 @@ import 'package:tourism/screens/detail/image_overview.dart';
 import 'package:tourism/screens/detail/location_info.dart';
 import 'package:tourism/screens/detail/likes.dart';
 import 'package:tourism/screens/detail/description.dart';
+import 'package:tourism/screens/detail/button_bookmark.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key, required this.tourism});
@@ -21,6 +22,7 @@ class DetailScreen extends StatelessWidget {
             icon: Icon(Icons.arrow_back)),
         title: const Text("Tourism Detail"),
         centerTitle: true,
+        actions: [ButtonBookmark(tourism: tourism)],
       ),
       body: SingleChildScrollView(
           child: Padding(
