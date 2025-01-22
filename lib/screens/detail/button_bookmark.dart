@@ -44,13 +44,13 @@ class _ButtonBookmarkState extends State<ButtonBookmark> {
   }
 
   void _addBookmark() {
-    if (_isBookmarked) {
+    if (!_isBookmarked) {
+      // if havent bookmarked, add ontap
+      bookmarkedTourismList.add(widget.tourism);
+    } else {
       // if already bookmarked, remove ontap
       bookmarkedTourismList
           .removeWhere((current) => widget.tourism.id == current.id);
-    } else {
-      // else, if havent already, add ontap
-      bookmarkedTourismList.add(widget.tourism);
     }
     _isBookmarked = !_isBookmarked;
   }
