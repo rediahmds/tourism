@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tourism/models/tourism.dart';
-import 'package:tourism/screens/home/home_screen.dart';
 import './screens/detail/detail_screen.dart';
 import 'package:tourism/static/navigation_route.dart';
 import 'styles/themes/tourism_theme.dart';
+import 'screens/main/main_screen.dart';
 
 void main() {
   runApp(App());
@@ -15,9 +15,9 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: NavigationRoute.homeRoute.name,
+      initialRoute: NavigationRoute.mainRoute.name,
       routes: {
-        NavigationRoute.homeRoute.name: (context) => HomeScreen(),
+        NavigationRoute.mainRoute.name: (context) => MainScreen(),
         NavigationRoute.detailRoute.name: (context) => DetailScreen(
             tourism: ModalRoute.of(context)?.settings.arguments as Tourism),
       },
