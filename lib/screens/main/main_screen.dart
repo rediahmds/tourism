@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:tourism/screens/home/home_screen.dart';
 import 'package:tourism/screens/bookmarks/bookmark_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:tourism/provider/main/index_bottom_nav.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  int _bottomNavBarIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: switch (_bottomNavBarIndex) {
-        0 => HomeScreen(),
-        _ => BookmarkScreen()
-      },
+      body: Consumer<IndexBottomNavProvider>( // Listens to notifier and update the ui
+          builder: (context, value, child) {
+            return switch (value.indexBottomNavbar) {
+              0 => HomeScreen(),
+              _ => BookmarkScreen()
+            };
+          }
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -40,11 +39,9 @@ class _MainScreenState extends State<MainScreen> {
             ),
           )
         ],
-        currentIndex: _bottomNavBarIndex,
+        currentIndex: context.watch<IndexBottomNavProvider>().indexBottomNavbar,
         onTap: (index) {
-          setState(() {
-            _bottomNavBarIndex = index;
-          });
+          context.read<IndexBottomNavProvider>().setIndexBottomNavbar = index;
         },
       ),
     );
