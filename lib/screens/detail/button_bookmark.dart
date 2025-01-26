@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tourism/models/tourism.dart';
+import 'package:tourism/provider/detail/bookmark_icon.dart';
+import 'package:tourism/provider/detail/bookmark_list.dart';
 
 class ButtonBookmark extends StatefulWidget {
   const ButtonBookmark({super.key, required this.tourism});
@@ -11,21 +14,28 @@ class ButtonBookmark extends StatefulWidget {
 }
 
 class _ButtonBookmarkState extends State<ButtonBookmark> {
-  late bool _isBookmarked;
 
   @override
   void initState() {
-    final currentTourism = bookmarkedTourismList
-        .where((current) => current.id == widget.tourism.id);
+    final bookmarkListProvider = context.read<BookmarkListProvider>();
+    final bookmarkIconProvider = context.read<BookmarkIconProvider>();
 
-    // if current tourism is in bookmarked list, light up the bookmark icon
-    setState(() {
-      if (currentTourism.isNotEmpty) {
-        _isBookmarked = true;
-      } else {
-        _isBookmarked = false;
-      }
+    Future.microtask(() {
+      final isBookmarked = bookmarkListProvider.isBookmarked(widget.tourism);
+      bookmarkIconProvider.setBookmark = isBookmarked;
     });
+
+    // final currentTourism = bookmarkedTourismList
+    //     .where((current) => current.id == widget.tourism.id);
+    //
+    // // if current tourism is in bookmarked list, light up the bookmark icon
+    // setState(() {
+    //   if (currentTourism.isNotEmpty) {
+    //     _isBookmarked = true;
+    //   } else {
+    //     _isBookmarked = false;
+    //   }
+    // });
 
     super.initState();
   }
@@ -34,24 +44,24 @@ class _ButtonBookmarkState extends State<ButtonBookmark> {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        setState(_addBookmark);
+        final bookmarkListProvider = context.read<BookmarkListProvider>();
+        final bookmarkIconProvider = context.read<BookmarkIconProvider>();
+        final isBookmarked = bookmarkIconProvider.isBookmarked;
+
+        if (!isBookmarked) {
+          bookmarkListProvider.addBookmark(widget.tourism);
+        } else {
+          bookmarkListProvider.removeBookmark(widget.tourism);
+        }
+
+        bookmarkIconProvider.setBookmark = !isBookmarked;
       },
-      icon: Icon(_isBookmarked
+      icon: Icon(context.watch<BookmarkIconProvider>().isBookmarked
           ? Icons.bookmark_rounded
           : Icons.bookmark_outline_outlined),
-      color: _isBookmarked ? Colors.deepPurpleAccent : Colors.grey,
+      color: context.watch<BookmarkIconProvider>().isBookmarked
+          ? Colors.deepPurpleAccent
+          : Colors.grey,
     );
-  }
-
-  void _addBookmark() {
-    if (!_isBookmarked) {
-      // if havent bookmarked, add ontap
-      bookmarkedTourismList.add(widget.tourism);
-    } else {
-      // if already bookmarked, remove ontap
-      bookmarkedTourismList
-          .removeWhere((current) => widget.tourism.id == current.id);
-    }
-    _isBookmarked = !_isBookmarked;
   }
 }
