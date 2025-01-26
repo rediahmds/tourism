@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tourism/models/tourism.dart';
+import 'package:tourism/provider/detail/bookmark_list.dart';
 import 'package:tourism/provider/main/index_bottom_nav.dart';
 import './screens/detail/detail_screen.dart';
 import 'package:tourism/static/navigation_route.dart';
@@ -8,11 +9,17 @@ import 'styles/themes/tourism_theme.dart';
 import 'screens/main/main_screen.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-      create: (context) => IndexBottomNavProvider(),
-      child: App()
-  )
-  );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => IndexBottomNavProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => BookmarkListProvider(),
+      )
+    ],
+    child: App(),
+  ));
 }
 
 class App extends StatelessWidget {
