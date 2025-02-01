@@ -32,7 +32,7 @@ class App extends StatelessWidget {
       routes: {
         NavigationRoute.mainRoute.name: (context) => MainScreen(),
         NavigationRoute.detailRoute.name: (context) => DetailScreen(
-            tourism: ModalRoute.of(context)?.settings.arguments as Tourism),
+            tourismId: ModalRoute.of(context)?.settings.arguments as int),
       },
       title: 'Tourism App',
       theme: TourismTheme.lightTheme,
