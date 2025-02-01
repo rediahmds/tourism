@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:tourism/models/tourism.dart';
+import 'package:tourism/data/models/tourism.dart';
 
 class BookmarkListProvider extends ChangeNotifier {
   final List<Tourism> _bookmarkList = [];

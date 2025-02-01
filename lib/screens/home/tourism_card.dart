@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tourism/models/tourism.dart';
+import 'package:tourism/data/models/tourism.dart';
 import 'cover_image.dart';
 import 'cover_location.dart';
 import 'cover_likes.dart';

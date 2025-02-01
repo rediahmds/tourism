@@ -1,4 +1,4 @@
-import 'package:tourism/models/tourism.dart';
+import 'package:tourism/data/models/tourism.dart';
 
 class TourismListResponse {
   final bool error;

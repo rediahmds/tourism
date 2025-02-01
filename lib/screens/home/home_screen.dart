@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'tourism_card.dart';
-import 'package:tourism/models/tourism.dart';
+import 'package:tourism/data/models/tourism.dart';
 import 'package:tourism/static/navigation_route.dart';
 
 class HomeScreen extends StatelessWidget {
